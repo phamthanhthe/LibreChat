@@ -1,0 +1,43 @@
+# Cấu hình chỉ 3 providers
+endpoints:
+  # OpenAI
+  openAI:
+    apiKey: "${OPENAI_API_KEY}"
+    models:
+      default: [
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-3.5-turbo"
+      ]
+  
+  # Google Gemini
+  google:
+    apiKey: "${GOOGLE_KEY}"
+    models:
+      default: [
+        "gemini-pro",
+        "gemini-pro-vision"
+      ]
+  
+  # Anthropic Claude
+  anthropic:
+    apiKey: "${ANTHROPIC_API_KEY}"
+    models:
+      default: [
+        "claude-3-opus",
+        "claude-3-sonnet",
+        "claude-3-haiku"
+      ]
+
+# Tắt các providers khác
+disabledEndpoints: [
+  "deepseek",
+  "fireworks", 
+  "groq",
+  "huggingface",
+  "mistral",
+  "nvidia",
+  "openrouter",
+  "perplexity",
+  "together"
+]
