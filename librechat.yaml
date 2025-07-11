@@ -1,33 +1,29 @@
-# librechat.yaml
-version: 1.0.5
+version: 1.2.8
 cache: true
-
 endpoints:
-  # Chỉ định nghĩa 3 endpoints cần giữ
-  openAI:
-    apiKey: "${OPENAI_API_KEY}"
-    models:
-      default: [
-        "gpt-4",
-        "gpt-4-turbo", 
-        "gpt-3.5-turbo"
-      ]
-      
-  google:
-    apiKey: "${GOOGLE_KEY}"
-    models:
-      default: [
-        "gemini-pro",
-        "gemini-pro-vision"
-      ]
-      
-  anthropic:
-    apiKey: "${ANTHROPIC_API_KEY}"
-    models:
-      default: [
-        "claude-3-opus-20240229",
-        "claude-3-sonnet-20240229",
-        "claude-3-haiku-20240307"
-      ]
-
-# KHÔNG định nghĩa các endpoints khác = chúng sẽ bị disable
+  custom:
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      models:
+        default: ["gpt-3.5-turbo"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "OpenRouter"
+    - name: "Ollama"
+      apiKey: "ollama"
+      baseURL: "http://host.docker.internal:11434/v1/"
+      models:
+        default: [
+          "llama3:latest",
+          "command-r",
+          "mixtral",
+          "phi3"
+          ]
+        fetch: true # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "current_model"
