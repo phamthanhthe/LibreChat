@@ -173,8 +173,8 @@ class GoogleClient extends BaseClient {
           ? this.modelOptions.thinkingBudget
           : 0,
     };
-   // delete this.modelOptions.thinking;
-   // delete this.modelOptions.thinkingBudget;
+    delete this.modelOptions.thinking;
+    delete this.modelOptions.thinkingBudget;
 
     this.sender =
       this.options.sender ??
